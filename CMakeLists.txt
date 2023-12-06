@@ -1,8 +1,11 @@
-#cmake_minumum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.16)
 
 
 #project name
 project(main)
+
+# 添加可执行文件, must make the name "my_executable" as install(TARGETS xxxx)
+add_executable(my_executable src/main.c)
 
 #head file path
 include_directories(include)
@@ -15,6 +18,11 @@ set(TEST_MATH ${DIR_SRCS})
 
 #set extern libraries
 #set(LIBRARIES libm.so pthread)
+
+# 设置统一安装路径前缀
+set(CMAKE_INSTALL_PREFIX ./install)
+# 定义安装对象及安装路径
+install(TARGETS my_executable DESTINATION ./)
 
 #add executable fiel 这个第一个参数main是生成的可执行文件的名称
 add_executable(main ${TEST_MATH})
