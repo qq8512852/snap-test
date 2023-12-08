@@ -6,15 +6,20 @@ project(main)
 # 添加可执行文件, must make the name "my_executable" as install(TARGETS xxxx)
 # add_executable(my_executable src/main.c)
 
+set(tools /home/wubo/Desktop/github/rasp-tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin)
+set(CMAKE_C_COMPILER    ${tools}/arm-linux-gnueabihf-gcc)
+set(CMAKE_CXX_COMPILER  ${tools}/arm-linux-gnueabihf-g++)
+
 #source direcotry 指定源文件目录为src，并将其赋值给环境变量SRCS
 aux_source_directory(src SRCS)
 
 #设置lib和include
 set(INC_DIR "./libs/openssl/include")
 set(LIB_DIR "./libs/openssl/lib64")
-set(DEPEND_LIB  -lm
-                -lssl
-                -lcrypto)
+set(DEPEND_LIB  )
+#set(DEPEND_LIB  -lm
+#                -lssl
+#                -lcrypto)
 #指定头文件目录
 include_directories(${INC_DIR}) # 对应于-I
 
